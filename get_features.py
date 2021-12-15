@@ -7,8 +7,8 @@ xyz_names = [ line.rstrip() for line in xyz_f.readlines() ]
 data_list = []
 for i, xyz in enumerate(xyz_names):
     pybel_mol = next(pybel.readfile("xyz", xyz))
-    rdk_smiles = pybel_mol.write("smi")
-    rdk_mol = rdk.Chem.MolFromSmiles(rdk_smiles)
+    smiles = pybel_mol.write("smi")
+    rdk_mol = rdk.Chem.MolFromSmiles(smiles)
     natoms = rdk_mol.GetNumAtoms()
     nbonds = rdk_mol.GetNumBonds()
     mw = rdk.Chem.Descriptors.ExactMolWt(rdk_mol)
